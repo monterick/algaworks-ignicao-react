@@ -1,6 +1,6 @@
 import React from "react";
 import './Table.scss'
-import mockdate from './Table.mockdata'
+import mockdata from './Table.mockdata'
 import { jsxAttribute } from "@babel/types";
 const headers = [
     {key:'nome',value:'Nome'},
@@ -20,7 +20,7 @@ const Table = () =>{
           </thead>
           <tbody>
             {
-                mockdate.map((atrb)=><tr>
+                mockdata.map((atrb)=><tr>
                     <td key={atrb.id}>{atrb.nome}</td>
                     <td>{atrb.preco}</td>
                     <td className="right">{atrb.estoque}</td>

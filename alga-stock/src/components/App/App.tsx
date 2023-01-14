@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../Header';
 
 import './App.css';
 
@@ -7,12 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-     app
-     <h1>Batata</h1>
-     <ul>
-      <li>Batata palha</li>
-      <li>batata cozida</li>
-     </ul>
+      <Header title='AlgaStock'/>
     </div>
   );
 }

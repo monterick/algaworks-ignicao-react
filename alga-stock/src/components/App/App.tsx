@@ -18,15 +18,22 @@ function TestComponent(){
 function App() {
 
   const [street, setStreet] = useState('');
-
+  const bbn = 1
   return (
     <div className="App">
       <Header title='AlgaStock'/>
       <Container>
-       <Button appendIcon={<TestComponent/>} onClick={()=>window.alert("Opaa")}>Clique-me</Button>
-       <Input label="Street" placeholder='15 de piracicaba' value={street} 
-       onChange={e => setStreet(e.target.value)}
-       />
+    <ul>
+       {
+        ['Banana','Maçã','Jaca'].map((name,index)=>{
+          return(
+            <li key={index}>{name}</li>
+          )
+        })
+       }
+
+       </ul>
+       
       </Container>
     </div>
   );

@@ -8,6 +8,7 @@ const headers = [
     {key:'estoque', value:'Estoque'}
 ]
 
+
 const Table = () =>{
     return(
         <table className="AppTable">

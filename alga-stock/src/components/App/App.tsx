@@ -6,12 +6,8 @@ import Container from '../../shared/Container';
 
 
 import './App.css';
-import Input from '../../shared/Input';
+import Table from '../../shared/Table';
 
-
-function TestComponent(){
-  return <img width="20" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png" alt="jjj" />
-}
 
 //import ClassComponent from '../ClassComponent';
 
@@ -23,17 +19,8 @@ function App() {
     <div className="App">
       <Header title='AlgaStock'/>
       <Container>
-    <ul>
-       {
-        ['Banana','Maçã','Jaca'].map((name,index)=>{
-          return(
-            <li key={index}>{name}</li>
-          )
-        })
-       }
 
-       </ul>
-       
+       <Table />
       </Container>
     </div>
   );

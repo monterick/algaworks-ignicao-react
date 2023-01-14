@@ -10,3 +10,8 @@
 ul{
   margin-left: 20px;
 }
+
+.Container{
+  margin: 10px auto;
+  max-width: 680px;
+}

@@ -1,6 +1,8 @@
 import React from "react";
 //import './Table.scss'
 
+//proxima aula scss
+
 const Table = () =>{
     return(
         <table>

@@ -1,30 +1,31 @@
 import React from "react";
 import './Table.scss'
+import mockdate from './Table.mockdata'
+import { jsxAttribute } from "@babel/types";
+const headers = [
+    {key:'nome',value:'Nome'},
+    {key:'preco',value:'Preco'},
+    {key:'estoque', value:'Estoque'}
+]
 
 const Table = () =>{
     return(
         <table className="AppTable">
           <thead>
-            <th>Produto</th>
-            <th>Preço</th>
-            <th className="right">Estoque</th>
+            <tr>
+            {
+               headers.map(header=> <th key={header.key}>{header.value}</th>)
+            }
+            </tr>
           </thead>
           <tbody>
-            <tr>
-                <td>Maca</td>
-                <td>5.51</td>
-                <td className="right">45</td>
-            </tr>
-            <tr>
-                <td>Banana</td>
-                <td>3.4</td>
-                <td className="right">100</td>
-            </tr>
-            <tr>
-                <td>Melao</td>
-                <td>5.52</td>
-                <td className="right">80</td>
-            </tr>
+            {
+                mockdate.map((atrb)=><tr>
+                    <td key={atrb.id}>{atrb.nome}</td>
+                    <td>{atrb.preco}</td>
+                    <td className="right">{atrb.estoque}</td>
+                </tr>)
+            }
           </tbody>
         </table>
     )

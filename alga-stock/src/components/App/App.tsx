@@ -15,12 +15,24 @@ import ProductsForm, { ProductCreator } from '../Products/ProductsForm';
 
 function App() {
 
+
+
   const {Products, Readers} = Conteudo
 
-  console.log(Conteudo)
+  const [products, setProducts] = useState(Products)
+
+  console.log(products)
 
   const handleProductSubmit = (product: ProductCreator)=>{
     console.log(product)
+    setProducts([
+      ...products,
+      {
+        id: Products.length + 1,
+        ...product
+      }
+    ])
+    console.log(products)
   }
 
   const [street, setStreet] = useState('');
@@ -32,7 +44,7 @@ function App() {
       
 
         <Table 
-        data={Products}
+        data={products}
         headers={Readers}
         /> 
 

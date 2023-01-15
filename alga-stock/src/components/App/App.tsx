@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
 import Header from '../Header';
-import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container';
-import Form from '../../shared/Form';
+
 
 
 import './App.css';
 import Table from '../../shared/Table';
 import Conteudo from '../../shared/Table/Table.mockdata'
-import Input from '../../shared/Input';
+import ProductsForm from '../Products/ProductsForm';
+
 
 //import ClassComponent from '../ClassComponent';
 
@@ -32,12 +32,7 @@ function App() {
         headers={Readers}
         /> 
 
-       <Form title='Meu form' onSubmit={console.log}>
-        <Input label="Nome" placeholder="nome teste"/>
-        <Input label="Preço" placeholder="preço teste"/>
-        <Input label="Estoque" placeholder="estoque teste"/>
-        <Button>Submit</Button>
-       </Form>
+      <ProductsForm />
      
       </Container>
     </div>

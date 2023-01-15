@@ -2,7 +2,7 @@ import React from "react";
 import './Table.scss'
 import Products from './Table.mockdata'
 
-const headers = [
+const headers:TabHeaders[] = [
   {key:'nome',value:'Nome'},
   {key:'preco',value:'Preço'},
   {key:'acoes',value:'Ações'},
@@ -23,7 +23,9 @@ type organizedItem = {
   [key:string]:any
 }
 
-function organizeData(data: any[], headers:TabHeaders[]){
+function organizeData(data: any[], headers:TabHeaders[])
+:[organizedItem[], IndexedHeaders]
+{
   const IndexedHeaders:IndexedHeaders = {}
   
   headers.forEach((header)=>{
@@ -46,14 +48,16 @@ function organizeData(data: any[], headers:TabHeaders[]){
     return organizedItem;
   })
 
-  console.table(organizedData)
+  //console.table(organizedData)
+
+  return [ organizedData, IndexedHeaders]
 
 }
 
 const Table = () =>{
 
-  organizeData(Products,headers)
-
+  const [ organizedData, IndexedHeaders] = organizeData(Products,headers)
+console.table(organizedData)
     return(
         <table className="AppTable">
           <thead>
@@ -61,16 +65,32 @@ const Table = () =>{
               {
                 headers.map((header)=>{
                   return(
-                    <th>{header.value}</th>
+                    <th
+                    key={header.key}
+                    className={header.right?'right':''}
+                    >{header.value}</th>
                   )
                 })
               }
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>dd</td>
-            </tr>
+          <tbody>            
+              {
+                organizedData.map((row,i)=>{
+                  return(
+                   <tr key={i}>
+                    {
+                      Object.keys(row)
+                      .map(item=>{
+                        return(
+                          <td>{row[item]}</td>
+                        )
+                      })
+                    }
+                   </tr> 
+                  )
+                })
+              }            
           </tbody>
         </table>
     )

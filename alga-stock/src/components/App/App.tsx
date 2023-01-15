@@ -21,10 +21,10 @@ function App() {
 
   const [products, setProducts] = useState(Products)
 
-  console.log(products)
+  
 
   const handleProductSubmit = (product: ProductCreator)=>{
-    console.log(product)
+
     setProducts([
       ...products,
       {

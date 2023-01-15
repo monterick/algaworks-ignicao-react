@@ -3,13 +3,14 @@ import './Table.scss'
 import Products from './Table.mockdata'
 
 const headers:TabHeaders[] = [
+  {key:'id',value:'#'},
   {key:'nome',value:'Nome'},
   {key:'preco',value:'Preço'},
   {key:'acoes',value:'Ações'},
   {key:'estoque',value:'Estoque',right:true}
 ]
 
-declare interface TabHeaders{
+declare interface TabHeaders{  
   key:string
   value:string
   right?:boolean

@@ -7,11 +7,15 @@ import Container from '../../shared/Container';
 
 import './App.css';
 import Table from '../../shared/Table';
-
+import Conteudo from '../../shared/Table/Table.mockdata'
 
 //import ClassComponent from '../ClassComponent';
 
 function App() {
+
+  const {Products, Readers} = Conteudo
+
+  console.log(Conteudo)
 
   const [street, setStreet] = useState('');
   const bbn = 1
@@ -19,8 +23,12 @@ function App() {
     <div className="App">
       <Header title='AlgaStock'/>
       <Container>
-
-       <Table />
+ 
+        <Table 
+        data={Products}
+        headers={Readers}
+        /> 
+     
       </Container>
     </div>
   );

@@ -1,19 +1,21 @@
 import React from "react";
 import './Table.scss'
-import Products from './Table.mockdata'
 
-const headers:TabHeaders[] = [
-  {key:'id',value:'#'},
-  {key:'nome',value:'Nome'},
-  {key:'preco',value:'Preço'},
-  {key:'acoes',value:'Ações'},
-  {key:'estoque',value:'Estoque',right:true}
-]
+
 
 declare interface TabHeaders{  
   key:string
   value:string
   right?:boolean
+}
+
+declare interface TableProps{
+  headers:TabHeaders[]
+  data:any[]
+  enableActions?:boolean
+  onDelete?: (item:any) => void 
+  onDetail?: (item:any) => void
+  onEdit?: (item:any) => void
 }
 
 type IndexedHeaders = {
@@ -55,16 +57,16 @@ function organizeData(data: any[], headers:TabHeaders[])
 
 }
 
-const Table = () =>{
+const Table:React.FC<TableProps> = (props) =>{
 
-  const [ organizedData, IndexedHeaders] = organizeData(Products,headers)
+  const [ organizedData, IndexedHeaders] = organizeData(props.data,props.headers)
 console.table(organizedData)
     return(
         <table className="AppTable">
           <thead>
             <tr>
               {
-                headers.map((header)=>{
+                props.headers.map((header)=>{
                   return(
                     <th
                     key={header.key}

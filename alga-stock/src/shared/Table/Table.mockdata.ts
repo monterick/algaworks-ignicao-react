@@ -5,6 +5,19 @@ export interface Product{
     estoque:number
 }
 
+export interface Readers{
+    key:string
+    value:string
+    right?:boolean
+}
+
+const Readers:Readers[] = [
+    {key:'id',value:'#'},
+    {key:'nome',value:'Nome'},
+    {key:'preco',value:'Preço'},
+    {key:'estoque',value:'Estoque',right:true}
+]
+
 const Products:Product[] = [
    {
     id:1,
@@ -27,4 +40,4 @@ const Products:Product[] = [
 
 ]
 
-export default Products
+export default { Products, Readers }

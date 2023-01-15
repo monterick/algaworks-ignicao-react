@@ -7,7 +7,7 @@ import Container from '../../shared/Container';
 
 import './App.css';
 import Table from '../../shared/Table';
-import Conteudo from '../../shared/Table/Table.mockdata'
+import Conteudo, { Product } from '../../shared/Table/Table.mockdata'
 import ProductsForm, { ProductCreator } from '../Products/ProductsForm';
 
 
@@ -35,8 +35,15 @@ function App() {
     console.log(products)
   }
 
-  const [street, setStreet] = useState('');
-  const bbn = 1
+
+  const handleProductUpdate = (newProduct: Product) => {
+    setProducts(products.map(product =>
+      product.id === newProduct.id
+        ? newProduct
+        : product
+    ))
+  }
+
   return (
     <div className="App">
       <Header title='AlgaStock'/>
@@ -48,7 +55,7 @@ function App() {
         headers={Readers}
         /> 
 
-      <ProductsForm onSubmit={handleProductSubmit} />
+      <ProductsForm onSubmit={handleProductSubmit} onUpdate={handleProductUpdate} form={products[2]} />
      
       </Container>
     </div>

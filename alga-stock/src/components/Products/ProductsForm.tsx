@@ -2,14 +2,14 @@ import React, { useState }  from "react";
 import Button from "../../shared/Button/Button";
 import Form from "../../shared/Form";
 import Input from "../../shared/Input";
+import { Product } from "../../shared/Table/Table.mockdata";
 
-
-const initialFormState = {
-  nome:'',
-  preco:'',
-  estoque:''
+declare interface InitialFormState {
+  id?: number
+  nome: string
+  preco: string
+  estoque: string
 }
-
 
 
 export interface ProductCreator{
@@ -18,11 +18,27 @@ export interface ProductCreator{
   estoque:number
 }
 
-declare interface ProductFormProps{
+declare interface ProductFormProps{ 
+  form?: Product 
   onSubmit:(product:ProductCreator)=>void
+  onUpdate?: (product: Product) => void
 }
 
 const ProductsForm:React.FC<ProductFormProps> = (props) => {
+
+  const initialFormState:InitialFormState = props.form? {
+    id:props.form.id,
+    nome:props.form.nome,
+    preco:String(props.form.preco),
+    estoque:String(props.form.estoque),
+  }
+  :
+  {
+    
+    nome:'',
+    preco:'',
+    estoque:'',
+  }
 
   const [form, setForm] = useState(initialFormState)
 
@@ -36,14 +52,37 @@ const ProductsForm:React.FC<ProductFormProps> = (props) => {
 
   }
 
-  const handleFormSubmit = () => {
+
+  const updateProduct = (product: InitialFormState) => {
     const productDto = {
-      nome: String(form.nome),
-      preco: parseFloat(form.preco),
-      estoque: Number(form.estoque)
+      id: Number(product.id),
+      nome: String(product.nome),
+      preco: parseFloat(product.preco),
+      estoque: Number(product.estoque)
     }
-    props.onSubmit(productDto)
-    setForm(initialFormState)
+
+    props.onUpdate &&
+      props.onUpdate(productDto)
+  }
+
+  const createProduct = (product: InitialFormState) => {
+    const productDto = {
+      nome: String(product.nome),
+      preco: parseFloat(product.preco),
+      estoque: Number(product.estoque)
+    }
+
+    props.onSubmit &&
+      props.onSubmit(productDto)
+  }
+
+  
+  const handleFormSubmit = () => {
+    form.id
+    ? updateProduct(form)
+    : createProduct(form)
+  
+  setForm(initialFormState)
   }
 
 

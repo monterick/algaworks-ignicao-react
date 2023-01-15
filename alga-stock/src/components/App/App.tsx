@@ -8,7 +8,7 @@ import Container from '../../shared/Container';
 import './App.css';
 import Table from '../../shared/Table';
 import Conteudo from '../../shared/Table/Table.mockdata'
-import ProductsForm from '../Products/ProductsForm';
+import ProductsForm, { ProductCreator } from '../Products/ProductsForm';
 
 
 //import ClassComponent from '../ClassComponent';
@@ -18,6 +18,10 @@ function App() {
   const {Products, Readers} = Conteudo
 
   console.log(Conteudo)
+
+  const handleProductSubmit = (product: ProductCreator)=>{
+    console.log(product)
+  }
 
   const [street, setStreet] = useState('');
   const bbn = 1
@@ -32,7 +36,7 @@ function App() {
         headers={Readers}
         /> 
 
-      <ProductsForm />
+      <ProductsForm onSubmit={handleProductSubmit} />
      
       </Container>
     </div>

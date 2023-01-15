@@ -83,7 +83,9 @@ console.table(organizedData)
                       Object.keys(row)
                       .map(item=>{
                         return(
-                          <td>{row[item]}</td>
+                          <td
+                          className={IndexedHeaders[item].right?'right':''}
+                          >{row[item]}</td>
                         )
                       })
                     }
